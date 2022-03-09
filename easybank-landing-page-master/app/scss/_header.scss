@@ -1,0 +1,95 @@
+.header {
+  @include breakpoint-up(large) {
+    padding: 0rem 10rem;
+  }
+
+  > nav {
+    padding: 1.7rem 2.4rem;
+  }
+  &__logo {
+    > img {
+      width: 14.1rem;
+      height: 2.4rem;
+    }
+  }
+  // Mobile menu
+  &__mobile--menu {
+    position: absolute;
+    top: 8rem;
+    width: 86.67%;
+    left: calc((100% - 86.67%) / 2);
+    background: $white;
+    padding: 2.6rem 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40%;
+    border-radius: 5px;
+    > a {
+      color: $darkBlue;
+      text-align: center;
+    }
+  }
+
+  &__menu {
+    > span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background-color: $darkBlue;
+      transition: all 300ms ease-in-out;
+      transform-origin: 3.8px 2px;
+
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
+    }
+    &.open {
+      z-index: 100;
+      > span:first-child {
+        transform: rotate(45deg);
+      }
+      > span:nth-child(2) {
+        opacity: 0;
+      }
+      > span:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 50%;
+      }
+    }
+  }
+
+  &__links {
+    > a {
+      font-size: 1.4rem;
+      transition: color 200ms ease-in-out;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 5px;
+        top: 4.3rem;
+        left: 0px;
+        right: 0px;
+        background: linear-gradient(to right, $limeGreen, $brightCyan);
+        opacity: 0;
+        transition: opacity ease-in-out 200ms;
+      }
+
+      &:hover {
+        color: $darkBlue;
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+    &--link:not(:last-child) {
+      margin-right: 3.3rem;
+    }
+  }
+  &__cta {
+    font-size: 1.4rem;
+  }
+}
